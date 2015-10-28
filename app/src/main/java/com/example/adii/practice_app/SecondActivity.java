@@ -1,21 +1,29 @@
 package com.example.adii.practice_app;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class SecondActivity extends AppCompatActivity{
+
+public class SecondActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.second);
-        TextView username = (TextView) findViewById(R.id.username);
-        username.setText(getIntent().getExtras().getString("username"));
+
+        //turn title off
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //set to full screen
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(new GamePanel(this));
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
